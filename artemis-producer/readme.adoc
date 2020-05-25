@@ -1,6 +1,6 @@
 == Camel JMS Producer
 
-1. Create secret:
+=== Create secret:
 
 ----
 oc create secret generic amq-broker-amqp-secret \
@@ -10,15 +10,15 @@ oc create secret generic amq-broker-amqp-secret \
 --from-literal=trustStorePassword=password
 ----
 
-2. Create broker
+=== Create broker (requires the AMQ Operator)
 
 ----
 oc create -f amq.yaml
 ----
 
-3. Configure application.properties (replace **spring.artemis.host** with the actual OCP Route)
+=== Configure application.properties (replace **spring.artemis.host** with the actual OCP Route)
 
-4. Start the application
+=== Start the application
 
 ----
 mvn install spring-boot:run
