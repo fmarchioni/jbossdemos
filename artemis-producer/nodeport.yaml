@@ -1,0 +1,31 @@
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    description: The broker's OpenWire port.
+    service.alpha.openshift.io/dependencies: >-
+      [{"name": "broker-amq-amqp", "kind": "Service"},{"name":
+      "broker-amq-mqtt", "kind": "Service"},{"name": "broker-amq-stomp", "kind":
+      "Service"}]
+  creationTimestamp: '2018-08-29T14:46:33Z'
+  labels:
+    application: broker
+    template: amq-broker-76-statefulset-clustered
+  name: broker-external-tcp
+  namespace: amq-demo
+  resourceVersion: '2450312'
+  selfLink: /api/v1/namespaces/amq-demo/services/broker-amq-tcp
+  uid: 52631fa0-ab9a-11e8-9380-c280f77be0d0
+spec:
+  externalTrafficPolicy: Cluster
+  ports:
+   -  nodePort: 30001
+      port: 61616
+      protocol: TCP
+      targetPort: 61616
+  selector:
+    application: amq-broker-demo-simple-app
+  sessionAffinity: None
+  type: NodePort
+status:
+  loadBalancer: {}
