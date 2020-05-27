@@ -21,8 +21,8 @@ spec:
       protocols: amqp
       port: 5672
       expose: true
-#      anycastPrefix: jms.topic.
-#      multicastPrefix: jms.topic.
+      anycastPrefix: jms.queue.
+      multicastPrefix: jms.topic.
       connectionsAllowed: 100
       sslEnabled: true
       sslSecret: amq-broker-amqp-secret
